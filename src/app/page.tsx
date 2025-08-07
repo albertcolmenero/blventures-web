@@ -7,11 +7,10 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
-import { Leaf, Users, Heart, TreePine, Target, Lightbulb, Mail, ArrowRight, Play, Star, Globe } from "lucide-react"
+import { Leaf, Users, Heart, TreePine, Target, Lightbulb, Mail, ArrowRight, Star, Globe } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion"
 import LoadingAnimation from "@/components/LoadingAnimation"
-import CustomCursor from "@/components/CustomCursor"
 
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2 }: { end: number; duration?: number }) => {
@@ -69,9 +68,7 @@ export default function Home() {
   const [lastScrollY, setLastScrollY] = useState(0)
 
   const { scrollY } = useScroll()
-  const heroParallax = useTransform(scrollY, [0, 1000], [0, -500])
   const textParallax = useTransform(scrollY, [0, 1000], [0, 200])
-  const overlayOpacity = useTransform(scrollY, [0, 300], [0.3, 0.8])
 
   // Hide/show navigation on scroll
   useEffect(() => {
@@ -124,7 +121,7 @@ export default function Home() {
 
             <NavigationMenu className="hidden md:flex">
               <NavigationMenuList className="space-x-2">
-                {["inicio", "sobre-nosotros", "proyectos", "la-aldea", "contacto"].map((section, index) => (
+                {["inicio", "sobre-nosotros", "proyectos", "la-aldea", "contacto"].map((section) => (
                   <NavigationMenuItem key={section}>
                     <motion.div
                       whileHover={{ y: -2 }}
@@ -419,7 +416,7 @@ export default function Home() {
               style={{ borderRadius: '8px' }}
             >
               <p className="text-xl text-gray-700 font-light italic">
-                "La tribu del siglo 21. Vivir juntos, crecer de verdad."
+                &ldquo;La tribu del siglo 21. Vivir juntos, crecer de verdad.&rdquo;
               </p>
             </motion.div>
           </motion.div>
@@ -934,7 +931,7 @@ export default function Home() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Badge variant="outline" className="text-lg px-6 py-3 border-emerald-400/50 text-emerald-400 bg-transparent">
-                  "La tribu del siglo 21. Vivir juntos, crecer de verdad."
+                  &ldquo;La tribu del siglo 21. Vivir juntos, crecer de verdad.&rdquo;
                 </Badge>
               </motion.div>
             </motion.div>
