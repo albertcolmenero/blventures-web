@@ -11,6 +11,7 @@ import { Leaf, Users, Heart, TreePine, Target, Lightbulb, Mail, ArrowRight, Star
 import { useState, useEffect, useRef } from "react"
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion"
 import LoadingAnimation from "@/components/LoadingAnimation"
+import Image from "next/image"
 
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2 }: { end: number; duration?: number }) => {
@@ -97,7 +98,7 @@ export default function Home() {
         <LoadingAnimation />
       </AnimatePresence>
       
-      <div className="min-h-screen bg-gray-50 overflow-x-hidden">
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Refined Navigation */}
       <motion.nav 
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
@@ -112,11 +113,18 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div 
-              className="text-2xl font-bold text-gray-900"
+              className="flex items-center"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              Blue Life Ventures
+              <Image
+                src="/BV_NOFONDO.png"
+                alt="Blue Life Ventures"
+                width={200}
+                height={60}
+                className="w-auto"
+                priority
+              />
             </motion.div>
 
             <NavigationMenu className="hidden md:flex">
@@ -647,10 +655,11 @@ export default function Home() {
       </section>
 
       {/* Premium Contact Section */}
-      <section id="contacto" className="py-32 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">
-        {/* Animated Background Grid */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+      <section id="contacto" className="py-32 bg-gray-50 relative overflow-hidden">
+        {/* Subtle Background */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-50 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-50 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -663,28 +672,28 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <motion.h2 
-                className="text-5xl md:text-7xl font-bold text-white mb-8"
+                className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="font-bold text-emerald-600">
                   Únete
                 </span>{" "}
-                <span className="text-white">a Nuestra Visión</span>
+                <span className="font-normal">a Nuestra Visión</span>
               </motion.h2>
               <motion.p 
-                className="text-xl md:text-2xl text-gray-300 leading-relaxed"
+                className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
                 Participa como{" "}
-                <span className="text-emerald-400 font-semibold">Aldeano</span>,{" "}
-                <span className="text-blue-400 font-semibold">inversor</span> o{" "}
-                <span className="text-purple-400 font-semibold">colaborador</span>.{" "}
+                <span className="text-emerald-600 font-medium">Aldeano</span>,{" "}
+                <span className="text-blue-600 font-medium">inversor</span> o{" "}
+                <span className="text-gray-900 font-medium">colaborador</span>.{" "}
                 El futuro se construye juntos.
               </motion.p>
             </motion.div>
@@ -701,7 +710,8 @@ export default function Home() {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl">
+                <Card className="bg-white border border-gray-200 shadow-xl"
+                      style={{ borderRadius: '12px' }}>
                   <div className="p-10">
                     <form onSubmit={handleSubmit} className="space-y-8">
                       <motion.div
@@ -710,7 +720,7 @@ export default function Home() {
                         transition={{ duration: 0.6, delay: 0.8 }}
                         viewport={{ once: true }}
                       >
-                        <label htmlFor="name" className="block text-lg font-medium text-white mb-3">
+                        <label htmlFor="name" className="block text-lg font-medium text-gray-900 mb-3">
                           Nombre
                         </label>
                         <Input
@@ -720,7 +730,7 @@ export default function Home() {
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="Tu nombre completo"
                           required
-                          className="h-14 text-lg bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-emerald-400 focus:ring-emerald-400/20 transition-all"
+                          className="h-14 text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all"
                         />
                       </motion.div>
 
@@ -730,7 +740,7 @@ export default function Home() {
                         transition={{ duration: 0.6, delay: 1 }}
                         viewport={{ once: true }}
                       >
-                        <label htmlFor="email" className="block text-lg font-medium text-white mb-3">
+                        <label htmlFor="email" className="block text-lg font-medium text-gray-900 mb-3">
                           Correo Electrónico
                         </label>
                         <Input
@@ -740,7 +750,7 @@ export default function Home() {
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="tu@email.com"
                           required
-                          className="h-14 text-lg bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/20 transition-all"
+                          className="h-14 text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500/20 transition-all"
                         />
                       </motion.div>
 
@@ -750,7 +760,7 @@ export default function Home() {
                         transition={{ duration: 0.6, delay: 1.2 }}
                         viewport={{ once: true }}
                       >
-                        <label htmlFor="message" className="block text-lg font-medium text-white mb-3">
+                        <label htmlFor="message" className="block text-lg font-medium text-gray-900 mb-3">
                           Mensaje (opcional)
                         </label>
                         <Textarea
@@ -759,7 +769,7 @@ export default function Home() {
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           placeholder="Cuéntanos cómo te gustaría participar en La Aldea..."
                           rows={5}
-                          className="text-lg bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20 transition-all resize-none"
+                          className="text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all resize-none"
                         />
                       </motion.div>
 
@@ -774,7 +784,7 @@ export default function Home() {
                         <Button 
                           type="submit" 
                           size="lg" 
-                          className="w-full text-xl py-8 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500 hover:from-emerald-600 hover:via-blue-600 hover:to-purple-600 border-0 shadow-2xl shadow-emerald-500/25 group"
+                          className="w-full text-xl py-8 bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-lg group"
                         >
                           <Mail className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
                           Contáctanos
@@ -796,12 +806,12 @@ export default function Home() {
                       transition={{ duration: 0.8, delay: 1.6 }}
                       viewport={{ once: true }}
                     >
-                      <p className="text-gray-400 mb-3 text-lg">
+                      <p className="text-gray-600 mb-3 text-lg">
                         O escríbenos directamente a:
                       </p>
                       <motion.a 
                         href="mailto:info@bluelifeventures.com" 
-                        className="text-emerald-400 hover:text-emerald-300 font-semibold text-xl transition-colors"
+                        className="text-emerald-600 hover:text-emerald-700 font-semibold text-xl transition-colors"
                         whileHover={{ scale: 1.05 }}
                       >
                         info@bluelifeventures.com
@@ -821,61 +831,61 @@ export default function Home() {
               >
                 <div className="space-y-6">
                   <motion.div
-                    className="flex items-center gap-6 p-6 bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 backdrop-blur-xl border border-emerald-500/20 rounded-2xl"
+                    className="flex items-center gap-6 p-6 bg-emerald-50 border border-emerald-200 rounded-2xl"
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <div className="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
-                      <Mail className="h-8 w-8 text-emerald-400" />
+                    <div className="w-16 h-16 bg-emerald-100 border border-emerald-200 rounded-2xl flex items-center justify-center">
+                      <Mail className="h-8 w-8 text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Email</h3>
-                      <p className="text-emerald-400 text-lg">info@bluelifeventures.com</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
+                      <p className="text-emerald-600 text-lg">info@bluelifeventures.com</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-6 p-6 bg-gradient-to-r from-blue-500/10 to-blue-600/10 backdrop-blur-xl border border-blue-500/20 rounded-2xl"
+                    className="flex items-center gap-6 p-6 bg-blue-50 border border-blue-200 rounded-2xl"
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                      <TreePine className="h-8 w-8 text-blue-400" />
+                    <div className="w-16 h-16 bg-blue-100 border border-blue-200 rounded-2xl flex items-center justify-center">
+                      <TreePine className="h-8 w-8 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Encuentro Fundacional</h3>
-                      <p className="text-blue-400 text-lg">4-6 de julio de 2025</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Encuentro Fundacional</h3>
+                      <p className="text-blue-600 text-lg">4-6 de julio de 2025</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-6 p-6 bg-gradient-to-r from-purple-500/10 to-purple-600/10 backdrop-blur-xl border border-purple-500/20 rounded-2xl"
+                    className="flex items-center gap-6 p-6 bg-gray-50 border border-gray-200 rounded-2xl"
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-                      <Globe className="h-8 w-8 text-purple-400" />
+                    <div className="w-16 h-16 bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center">
+                      <Globe className="h-8 w-8 text-gray-600" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Comunidad Global</h3>
-                      <p className="text-purple-400 text-lg">Conectando el mundo</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Comunidad Global</h3>
+                      <p className="text-gray-600 text-lg">Conectando el mundo</p>
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Call to Action */}
                 <motion.div
-                  className="p-8 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-3xl text-center"
+                  className="p-8 bg-white border border-gray-200 rounded-3xl text-center shadow-lg"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     ¿Listo para ser parte del cambio?
                   </h3>
-                  <p className="text-gray-300 text-lg mb-6">
+                  <p className="text-gray-600 text-lg mb-6">
                     Únete a una comunidad que está redefiniendo el futuro de la humanidad.
                   </p>
                   <div className="flex items-center justify-center gap-4">
@@ -893,7 +903,7 @@ export default function Home() {
       </section>
 
       {/* Premium Footer */}
-      <footer className="bg-gradient-to-br from-black via-gray-950 to-slate-950 border-t border-white/10 py-20 relative overflow-hidden">
+      <footer className="bg-gray-50 border-t border-gray-200 py-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.15)_1px,transparent_0)] bg-[size:50px_50px]" />
@@ -916,21 +926,21 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <motion.h3 
-                className="text-3xl font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-6"
+                className="text-3xl font-bold text-gray-900 mb-6"
                 whileHover={{ scale: 1.05 }}
               >
                 Blue Life Ventures
               </motion.h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6 max-w-md">
+              <p className="text-gray-600 text-lg leading-relaxed mb-6 max-w-md">
                 Construyendo La Aldea, la tribu del siglo 21. Un futuro donde{" "}
-                <span className="text-emerald-400">vivir juntos</span> significa{" "}
-                <span className="text-blue-400">crecer de verdad</span>.
+                <span className="text-emerald-600">vivir juntos</span> significa{" "}
+                <span className="text-blue-600">crecer de verdad</span>.
               </p>
               <motion.div
                 whileHover={{ scale: 1.02, rotateY: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Badge variant="outline" className="text-lg px-6 py-3 border-emerald-400/50 text-emerald-400 bg-transparent">
+                <Badge variant="outline" className="text-lg px-6 py-3 border-emerald-500 text-emerald-600 bg-transparent">
                   &ldquo;La tribu del siglo 21. Vivir juntos, crecer de verdad.&rdquo;
                 </Badge>
               </motion.div>
@@ -943,7 +953,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-bold text-white text-xl mb-6">Enlaces</h4>
+              <h4 className="font-bold text-gray-900 text-xl mb-6">Enlaces</h4>
               <div className="space-y-4">
                 {[
                   { name: "Sobre Nosotros", section: "sobre-nosotros" },
@@ -954,7 +964,7 @@ export default function Home() {
                   <motion.button
                     key={link.name}
                     onClick={() => scrollToSection(link.section)}
-                    className="block text-gray-400 hover:text-white transition-colors text-lg group"
+                    className="block text-gray-600 hover:text-gray-900 transition-colors text-lg group"
                     whileHover={{ x: 5 }}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -975,21 +985,21 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-bold text-white text-xl mb-6">Contacto</h4>
+              <h4 className="font-bold text-gray-900 text-xl mb-6">Contacto</h4>
               <div className="space-y-4">
                 <motion.a 
                   href="mailto:info@bluelifeventures.com"
-                  className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors text-lg group"
+                  className="flex items-center gap-3 text-gray-600 hover:text-emerald-600 transition-colors text-lg group"
                   whileHover={{ x: 5 }}
                 >
                   <Mail className="h-5 w-5 group-hover:rotate-12 transition-transform" />
                   info@bluelifeventures.com
                 </motion.a>
                 <motion.div 
-                  className="flex items-center gap-3 text-gray-400 text-lg"
+                  className="flex items-center gap-3 text-gray-600 text-lg"
                   whileHover={{ x: 5 }}
                 >
-                  <TreePine className="h-5 w-5 text-emerald-400" />
+                  <TreePine className="h-5 w-5 text-emerald-600" />
                   Encuentro Fundacional 2025
                 </motion.div>
               </div>
@@ -1002,7 +1012,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <Separator className="mb-8 bg-white/10" />
+            <Separator className="mb-8 bg-gray-200" />
           </motion.div>
           
           <motion.div 
@@ -1012,11 +1022,11 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 1 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-600 text-lg">
               © 2025 Blue Life Ventures. Todos los derechos reservados.
             </p>
             <motion.p 
-              className="text-gray-600 mt-2"
+              className="text-gray-500 mt-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.2 }}
@@ -1027,8 +1037,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Background Elements */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+
       </footer>
     </div>
     </>
