@@ -117,19 +117,21 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <Image
-                src="/BV_NOFONDO.png"
-                alt="Blue Life Ventures"
-                width={200}
-                height={60}
-                className="w-auto"
-                priority
-              />
+              <div className="h-[70px] overflow-hidden flex items-center">
+                <Image
+                  src="/BV_NOFONDO.png"
+                  alt="Blue Life Ventures"
+                  width={180}
+                  height={50}
+                  className="w-auto"
+                  priority
+                />
+              </div>
             </motion.div>
 
             <NavigationMenu className="hidden md:flex">
               <NavigationMenuList className="space-x-2">
-                {["inicio", "sobre-nosotros", "proyectos", "la-aldea", "contacto"].map((section) => (
+                {["inicio", "sobre-nosotros", "proyectos", "la-aldea", ""].map((section) => (
                   <NavigationMenuItem key={section}>
                     <motion.div
                       whileHover={{ y: -2 }}
@@ -143,7 +145,7 @@ export default function Home() {
                         {section === "inicio" ? "Inicio" : 
                          section === "sobre-nosotros" ? "Sobre Nosotros" :
                          section === "proyectos" ? "Proyectos" :
-                         section === "la-aldea" ? "La Aldea" : "Contacto"}
+                         section === "la-aldea" ? "La Aldea" : ""}
                       </NavigationMenuLink>
                     </motion.div>
                   </NavigationMenuItem>
@@ -170,7 +172,7 @@ export default function Home() {
       {/* Refined Hero Section */}
       <section 
         id="inicio" 
-        className="relative min-h-screen flex items-center justify-start overflow-hidden pt-20"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
       >
         {/* Sophisticated Background */}
         <div className="absolute inset-0 z-0">
@@ -208,7 +210,7 @@ export default function Home() {
           className="container mx-auto px-6 py-20 relative z-30"
           style={{ y: textParallax }}
         >
-          <div className="max-w-6xl">
+          <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -221,22 +223,6 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <motion.span 
-                  className="font-normal"
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  Blue Life
-                </motion.span>
-                <br />
-                <motion.span 
-                  className="font-bold text-emerald-600"
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  Ventures
-                </motion.span>
-                <br />
-                <motion.span 
                   className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-600 tracking-wide"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -248,17 +234,16 @@ export default function Home() {
             </motion.div>
 
             <motion.p 
-              className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl leading-relaxed font-light"
+              className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl leading-relaxed font-light mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Un ecosistema de proyectos regenerativos que fusionan lo digital y lo presencial 
-              para un <span className="text-emerald-600 font-medium">impacto real</span> en personas y comunidades.
+              Impulsamos bienestar y desarrollo personal y profesional con mentoring, coaching, experiencias y formaciones.
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
@@ -270,7 +255,7 @@ export default function Home() {
               >
                 <Button 
                   size="lg" 
-                  className="text-lg px-10 py-6 bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-sm group"
+                  className="text-lg px-10 py-6 text-white border-0 shadow-sm group bg-gradient-to-r from-[#2a4dbf] via-[#7840d5] to-[#17bbc7] hover:from-[#1f3da3] hover:via-[#6a38c0] hover:to-[#15a8b3] transition-all duration-300"
                   onClick={() => scrollToSection("la-aldea")}
                 >
                   <Users className="mr-3 h-5 w-5" />
@@ -284,28 +269,41 @@ export default function Home() {
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="text-lg px-10 py-6 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 group"
-                  onClick={() => scrollToSection("sobre-nosotros")}
-                >
-                  Descubre Más
-                  <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <div className="relative inline-block rounded-md">
+                  <div 
+                    className="absolute inset-0 rounded-md"
+                    style={{
+                      background: 'linear-gradient(to right, #2a4dbf, #7840d5, #17bbc7)',
+                      padding: '2px'
+                    }}
+                  />
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="text-lg px-10 py-6 text-gray-700 hover:bg-gray-50 group relative z-10 bg-white border-0 rounded-md"
+                    onClick={() => scrollToSection("sobre-nosotros")}
+                    style={{
+                      margin: '2px',
+                      transform: 'translateY(0px)'
+                    }}
+                  >
+                    Descubre Más
+                    <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </motion.div>
             </motion.div>
 
             {/* Stats */}
             <motion.div 
-              className="mt-20 grid grid-cols-3 gap-8 max-w-3xl"
+              className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
             >
               <div className="text-center py-6 border-r border-gray-200 last:border-r-0">
                 <div className="text-4xl md:text-5xl font-light text-emerald-600 mb-2">
-                  <AnimatedCounter end={5} />+
+                  <AnimatedCounter end={4} />+
                 </div>
                 <div className="text-gray-500 text-sm md:text-base font-light">Proyectos Activos</div>
               </div>
@@ -360,8 +358,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <span className="font-normal">Quiénes</span>{" "}
-              <span className="font-bold text-emerald-600">Somos</span>
+              <span className="font-bold text-emerald-600">Quiénes somos</span>
             </motion.h2>
             <motion.p 
               className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light max-w-4xl mx-auto"
@@ -370,19 +367,16 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Blue Life Ventures es la creación de un{" "}
-              <span className="text-emerald-600 font-medium">ecosistema regenerativo</span>{" "}
-              que fusiona proyectos digitales y presenciales, con el objetivo de fundar{" "}
-              <span className="text-blue-600 font-medium">La Aldea</span>, una comunidad 
-              autosuficiente centrada en el desarrollo humano.
+              
+              Bluelife es un <span className="text-emerald-600 font-medium">ecosistema de negocios</span> que fomentan el <span className="text-blue-600 font-medium">bienestar</span> y el <span className="text-blue-600 font-medium">desarrollo personal y profesional</span>, ofreciendo mentoring digital, experiencias de ocio y wellness, coaching, eventos, retiros y formaciones.
             </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-16 mb-24">
             {[
-              { icon: Leaf, title: "Sostenibilidad", desc: "Vivir en equilibrio con la naturaleza", color: "emerald", delay: 0 },
-              { icon: Users, title: "Cooperación", desc: "Construir una tribu basada en la ayuda mutua", color: "blue", delay: 0.2 },
-              { icon: Heart, title: "Autenticidad", desc: "Vivir con honestidad y sin máscaras", color: "gray", delay: 0.4 }
+              { image: "/sostenibilidad.png", title: "Sostenibilidad", desc: "Vivir en equilibrio con la naturaleza", color: "emerald", delay: 0 },
+              { image: "/cooperacion.png", title: "Cooperación", desc: "Construir una tribu basada en la ayuda mutua", color: "blue", delay: 0.2 },
+              { image: "/autenticidad.png", title: "Autenticidad", desc: "Vivir con honestidad y sin máscaras", color: "gray", delay: 0.4 }
             ].map((item, index) => (
               <motion.div
                 key={item.title}
@@ -394,11 +388,16 @@ export default function Home() {
                 whileHover={{ y: -5 }}
               >
                 <motion.div 
-                  className={`w-20 h-20 bg-${item.color === 'emerald' ? 'emerald-50' : item.color === 'blue' ? 'blue-50' : 'gray-100'} border border-${item.color === 'emerald' ? 'emerald-200' : item.color === 'blue' ? 'blue-200' : 'gray-200'} flex items-center justify-center mx-auto mb-8 group-hover:scale-105 transition-all duration-300`}
+                  className="flex justify-center mb-0 group-hover:scale-105 transition-all duration-300"
                   whileHover={{ rotate: 2 }}
-                  style={{ borderRadius: '16px' }}
                 >
-                  <item.icon className={`h-10 w-10 ${item.color === 'emerald' ? 'text-emerald-600' : item.color === 'blue' ? 'text-blue-600' : 'text-gray-600'}`} />
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={120}
+                    height={120}
+                    className="w-50 h-50 object-contain"
+                  />
                 </motion.div>
                 <h3 className="text-2xl font-light text-gray-900 mb-4">
                   {item.title}
@@ -418,12 +417,15 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.div
-              className="inline-block px-12 py-8 bg-gray-50 border border-gray-200"
+              className="inline-block px-12 py-8 text-white shadow-sm"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
-              style={{ borderRadius: '8px' }}
+              style={{ 
+                borderRadius: '8px',
+                background: 'linear-gradient(to right, #2a4dbf, #7840d5, #17bbc7)'
+              }}
             >
-              <p className="text-xl text-gray-700 font-light italic">
+              <p className="text-xl font-light italic">
                 &ldquo;La tribu del siglo 21. Vivir juntos, crecer de verdad.&rdquo;
               </p>
             </motion.div>
@@ -566,342 +568,62 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <span className="font-bold text-emerald-600">La Aldea:</span>{" "}
+                <span className="font-bold text-blue-600">La Aldea:</span>{" "}
                 <span className="font-normal">Nuestra Visión</span>
               </motion.h2>
               <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-5xl mx-auto font-light">
                 Una comunidad autosuficiente, conectada con la naturaleza y enfocada en el 
                 desarrollo humano integral. La fusión perfecta de{" "}
-                <span className="text-emerald-600 font-medium">vida ancestral</span> con{" "}
-                <span className="text-blue-600 font-medium">comodidades modernas</span>.
+                <span className="text-emerald-600 font-medium">vida ancestral con
+                comodidades modernas</span>.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-12 mb-20">
-              {[
-                { icon: Users, title: "Comunidad", desc: "Cooperación y eliminación de la soledad a través de conexiones auténticas.", color: "blue" },
-                { icon: Heart, title: "Crecimiento Personal", desc: "Desarrollo integral como parte de la vida diaria.", color: "emerald" },
-                { icon: Leaf, title: "Resiliencia", desc: "Preparación para desafíos globales con autonomía y sostenibilidad.", color: "gray" }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  className="group"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="bg-gray-50 p-10 border border-gray-200 hover:border-gray-300 transition-all duration-300 h-full"
-                       style={{ borderRadius: '12px' }}>
-                    <motion.div
-                      className={`w-16 h-16 ${item.color === 'blue' ? 'bg-blue-100 border-blue-200' : 
-                                                item.color === 'emerald' ? 'bg-emerald-100 border-emerald-200' : 
-                                                'bg-gray-100 border-gray-200'} 
-                                 border flex items-center justify-center mb-8 group-hover:scale-105 transition-transform`}
-                      whileHover={{ rotate: 3 }}
-                      style={{ borderRadius: '8px' }}
-                    >
-                      <item.icon className={`h-8 w-8 ${item.color === 'blue' ? 'text-blue-600' : 
-                                                        item.color === 'emerald' ? 'text-emerald-600' : 
-                                                        'text-gray-600'}`} />
-                    </motion.div>
-                    <h3 className="text-2xl font-light text-gray-900 mb-4">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 text-lg leading-relaxed font-light">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.p 
-                className="text-xl text-gray-600 mb-10 font-light"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                Únete a nosotros en el{" "}
-                <span className="text-emerald-600 font-medium">Encuentro Fundacional</span>{" "}
-                del <span className="text-blue-600 font-medium">4-6 de julio de 2025</span>
-              </motion.p>
+            <div className="grid md:grid-cols-3 gap-16 mb-24">
+            {[
+              { image: "/comunidad.png", title: "Comunidad", desc: "Cooperación y eliminación de la soledad a través de conexiones auténticas.", color: "blue", delay: 0 },
+              { image: "/crecimientopersonal.png", title: "Crecimiento Personal", desc: "Desarrollo integral como parte de la vida diaria.", color: "emerald", delay: 0.2 },
+              { image: "/resiliencia.png", title: "Resiliencia", desc: "Preparación para desafíos globales con autonomía y sostenibilidad.", color: "gray", delay: 0.4 }
+            ].map((item, index) => (
               <motion.div
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button 
-                  size="lg" 
-                  className="text-lg px-12 py-6 bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-sm group"
-                  onClick={() => scrollToSection("contacto")}
-                >
-                  <TreePine className="mr-3 h-5 w-5" />
-                  Participa en La Aldea
-                  <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Premium Contact Section */}
-      <section id="contacto" className="py-32 bg-gray-50 relative overflow-hidden">
-        {/* Subtle Background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-50 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-50 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <motion.div 
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <motion.h2 
-                className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <span className="font-bold text-emerald-600">
-                  Únete
-                </span>{" "}
-                <span className="font-normal">a Nuestra Visión</span>
-              </motion.h2>
-              <motion.p 
-                className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light"
-                initial={{ opacity: 0, y: 50 }}
+                key={item.title}
+                className="group text-center"
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: item.delay }}
                 viewport={{ once: true }}
-              >
-                Participa como{" "}
-                <span className="text-emerald-600 font-medium">Aldeano</span>,{" "}
-                <span className="text-blue-600 font-medium">inversor</span> o{" "}
-                <span className="text-gray-900 font-medium">colaborador</span>.{" "}
-                El futuro se construye juntos.
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              className="grid lg:grid-cols-2 gap-16 items-center"
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {/* Contact Form */}
-              <motion.div
                 whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="bg-white border border-gray-200 shadow-xl"
-                      style={{ borderRadius: '12px' }}>
-                  <div className="p-10">
-                    <form onSubmit={handleSubmit} className="space-y-8">
-                      <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.8 }}
-                        viewport={{ once: true }}
-                      >
-                        <label htmlFor="name" className="block text-lg font-medium text-gray-900 mb-3">
-                          Nombre
-                        </label>
-                        <Input
-                          id="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Tu nombre completo"
-                          required
-                          className="h-14 text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all"
-                        />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 1 }}
-                        viewport={{ once: true }}
-                      >
-                        <label htmlFor="email" className="block text-lg font-medium text-gray-900 mb-3">
-                          Correo Electrónico
-                        </label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="tu@email.com"
-                          required
-                          className="h-14 text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500/20 transition-all"
-                        />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 1.2 }}
-                        viewport={{ once: true }}
-                      >
-                        <label htmlFor="message" className="block text-lg font-medium text-gray-900 mb-3">
-                          Mensaje (opcional)
-                        </label>
-                        <Textarea
-                          id="message"
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder="Cuéntanos cómo te gustaría participar en La Aldea..."
-                          rows={5}
-                          className="text-lg bg-gray-50 border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all resize-none"
-                        />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 1.4 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Button 
-                          type="submit" 
-                          size="lg" 
-                          className="w-full text-xl py-8 bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-lg group"
-                        >
-                          <Mail className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
-                          Contáctanos
-                          <motion.div
-                            className="ml-3"
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ArrowRight className="h-6 w-6" />
-                          </motion.div>
-                        </Button>
-                      </motion.div>
-                    </form>
-
-                    <motion.div 
-                      className="mt-10 pt-8 border-t border-white/10 text-center"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 1.6 }}
-                      viewport={{ once: true }}
-                    >
-                      <p className="text-gray-600 mb-3 text-lg">
-                        O escríbenos directamente a:
-                      </p>
-                      <motion.a 
-                        href="mailto:info@bluelifeventures.com" 
-                        className="text-emerald-600 hover:text-emerald-700 font-semibold text-xl transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        info@bluelifeventures.com
-                      </motion.a>
-                    </motion.div>
-                  </div>
-                </Card>
-              </motion.div>
-
-              {/* Contact Info */}
-              <motion.div
-                className="space-y-8"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="space-y-6">
-                  <motion.div
-                    className="flex items-center gap-6 p-6 bg-emerald-50 border border-emerald-200 rounded-2xl"
-                    whileHover={{ scale: 1.02, x: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <div className="w-16 h-16 bg-emerald-100 border border-emerald-200 rounded-2xl flex items-center justify-center">
-                      <Mail className="h-8 w-8 text-emerald-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
-                      <p className="text-emerald-600 text-lg">info@bluelifeventures.com</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className="flex items-center gap-6 p-6 bg-blue-50 border border-blue-200 rounded-2xl"
-                    whileHover={{ scale: 1.02, x: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <div className="w-16 h-16 bg-blue-100 border border-blue-200 rounded-2xl flex items-center justify-center">
-                      <TreePine className="h-8 w-8 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Encuentro Fundacional</h3>
-                      <p className="text-blue-600 text-lg">4-6 de julio de 2025</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className="flex items-center gap-6 p-6 bg-gray-50 border border-gray-200 rounded-2xl"
-                    whileHover={{ scale: 1.02, x: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <div className="w-16 h-16 bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center">
-                      <Globe className="h-8 w-8 text-gray-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Comunidad Global</h3>
-                      <p className="text-gray-600 text-lg">Conectando el mundo</p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Call to Action */}
-                <motion.div
-                  className="p-8 bg-white border border-gray-200 rounded-3xl text-center shadow-lg"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 1.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
+                <motion.div 
+                  className="flex justify-center mb-0 group-hover:scale-105 transition-all duration-300"
+                  whileHover={{ rotate: 2 }}
                 >
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    ¿Listo para ser parte del cambio?
-                  </h3>
-                  <p className="text-gray-600 text-lg mb-6">
-                    Únete a una comunidad que está redefiniendo el futuro de la humanidad.
-                  </p>
-                  <div className="flex items-center justify-center gap-4">
-                    {[0, 1, 2].map((i) => (
-                      <FloatingElement key={i} delay={i * 0.5}>
-                        <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${i === 0 ? 'from-emerald-400 to-emerald-500' : i === 1 ? 'from-blue-400 to-blue-500' : 'from-purple-400 to-purple-500'}`} />
-                      </FloatingElement>
-                    ))}
-                  </div>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={120}
+                    height={120}
+                    className="w-50 h-50 object-contain"
+                  />
                 </motion.div>
+                <h3 className="text-2xl font-light text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed font-light">
+                  {item.desc}
+                </p>
               </motion.div>
-            </motion.div>
+            ))}
+          </div>
+
+           
+
+            
           </div>
         </div>
       </section>
 
+      
       {/* Premium Footer */}
       <footer className="bg-gray-50 border-t border-gray-200 py-20 relative overflow-hidden">
         {/* Background Pattern */}
@@ -959,7 +681,6 @@ export default function Home() {
                   { name: "Sobre Nosotros", section: "sobre-nosotros" },
                   { name: "Proyectos", section: "proyectos" },
                   { name: "La Aldea", section: "la-aldea" },
-                  { name: "Contacto", section: "contacto" }
                 ].map((link, index) => (
                   <motion.button
                     key={link.name}
@@ -979,31 +700,7 @@ export default function Home() {
             </motion.div>
 
             {/* Contact Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="font-bold text-gray-900 text-xl mb-6">Contacto</h4>
-              <div className="space-y-4">
-                <motion.a 
-                  href="mailto:info@bluelifeventures.com"
-                  className="flex items-center gap-3 text-gray-600 hover:text-emerald-600 transition-colors text-lg group"
-                  whileHover={{ x: 5 }}
-                >
-                  <Mail className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-                  info@bluelifeventures.com
-                </motion.a>
-                <motion.div 
-                  className="flex items-center gap-3 text-gray-600 text-lg"
-                  whileHover={{ x: 5 }}
-                >
-                  <TreePine className="h-5 w-5 text-emerald-600" />
-                  Encuentro Fundacional 2025
-                </motion.div>
-              </div>
-            </motion.div>
+           
           </motion.div>
 
           <motion.div
